@@ -1,0 +1,38 @@
+﻿<mah:MetroWindow x:Class="WpfApp1.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:local="clr-namespace:WpfApp1"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+                 xmlns:interop="clr-namespace:Microsoft.DwayneNeed.Interop;assembly=Microsoft.DwayneNeed"
+                 mc:Ignorable="d"
+                 Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Margin="5" Content="Show Message" Click="ButtonBase_OnClick" />
+
+        <interop:AirspaceDecorator Grid.Row="1"
+                                   Background="{DynamicResource MahApps.Brushes.ThemeBackground}"
+                                   AirspaceMode="Redirect"
+                                   IsInputRedirectionEnabled="True"
+                                   IsOutputRedirectionEnabled="True">
+            <WindowsFormsHost Margin="70">
+                <rv:ReportViewer Margin="5,5,5,5"
+                                 x:Name="Viewer"
+                                 ProcessingMode="Local"
+                                 ShowBackButton="False"
+                                 ShowFindControls="False"
+                                 ShowPageNavigationControls="true"
+                                 ShowRefreshButton="False"
+                                 ShowPrintButton="False" />
+            </WindowsFormsHost>
+        </interop:AirspaceDecorator>
+
+    </Grid>
+</mah:MetroWindow>
